@@ -31,7 +31,7 @@ if response.status_code == 200:
         df.index = pd.to_datetime(df.index)  # Konverterer indeksen til datoformat
 
         # Lagre til CSV
-        df.to_csv("nasa_extended_data.csv")
+        df.to_csv("data/raw/nasa_extended_data.csv")
         print("Data lagret som nasa_extended_data.csv")
 
 else:
