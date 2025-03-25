@@ -1,6 +1,5 @@
 
 import os
-from src.fetch_data_yr import fetch_yr_data
 from src.fetch_data_nasa import fetch_nasa_data
 from src.fetch_data_frost import fetch_data_frost
 from src.clean_data import clean_and_merge_weather_data
@@ -14,7 +13,6 @@ def main():
 
 
     #Hent data
-    fetch_yr_data()
     fetch_nasa_data()
     fetch_data_frost()
 
