@@ -50,7 +50,7 @@ def clean_and_merge_weather_data(yr_path, nasa_path):
     ]
 
     # ===== 7. Iterator-eksempel =====
-    print("\n📅 Eksempel på temperaturer:")
+    print("\n Eksempel på temperaturer:")
     for i, row in merged_df.iterrows():
         print(f"{row['Date']} → {row['Temperature']} °C")
         if i >= 2:
