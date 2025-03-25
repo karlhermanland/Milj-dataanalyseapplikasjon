@@ -9,10 +9,10 @@ def fetch_nasa_data():
     params = {
         "parameters": "ALLSKY_SFC_SW_DWN,TS,QV2M,PS",  
         "community": "RE",
-        "longitude": 10.0,  # Endre til ønsket koordinat
-        "latitude": 59.0,   # Endre til ønsket koordinat
-        "start": "20240101",  # Startdato (YYYYMMDD)
-        "end": "20251231",  # Sluttdato (YYYYMMDD)
+        "longitude": 10.718, 
+        "latitude": 59.943,   # Koordinatene til Oslo-Blindern
+        "start": "20200101",  # Startdato (YYYYMMDD)
+        "end": "20250130",  # Sluttdato (YYYYMMDD)
         "format": "JSON"
     }
 
