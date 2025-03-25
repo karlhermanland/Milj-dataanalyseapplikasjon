@@ -10,8 +10,8 @@ params = {
     "community": "RE",
     "longitude": 10.0,  # Endre til ønsket koordinat
     "latitude": 59.0,   # Endre til ønsket koordinat
-    "start": "20230101",  # Startdato (YYYYMMDD)
-    "end": "20231231",  # Sluttdato (YYYYMMDD)
+    "start": "20240101",  # Startdato (YYYYMMDD)
+    "end": "20251231",  # Sluttdato (YYYYMMDD)
     "format": "JSON"
 }
 
