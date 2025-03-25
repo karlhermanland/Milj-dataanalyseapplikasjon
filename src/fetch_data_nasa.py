@@ -30,6 +30,7 @@ def fetch_nasa_data():
             # Opprette DataFrame med utvalgte variabler
             df = pd.DataFrame.from_dict(parameters, orient="index").T
             df.index = pd.to_datetime(df.index)  # Konverterer indeksen til datoformat
+            df = df.reset_index().rename(columns={"index": "Date"})
 
             # Lagre til CSV
             df.to_csv("data/raw/nasa_extended_data.csv")

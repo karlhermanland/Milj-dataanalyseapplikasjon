@@ -20,7 +20,7 @@ def fetch_data_frost():
         'mean(air_pressure_at_sea_level P1D)': 'Pressure'
     }
 
-    print(f"📅 Henter daglige data for perioden {start} til {end} ...")
+    print(f"Henter daglige data for perioden {start} til {end} ...")
 
     params = {
         'sources': 'SN18700',
@@ -57,7 +57,7 @@ def fetch_data_frost():
                     row[label] = combined[date].get(label)
                 writer.writerow(row)
 
-        print("✅ Daglige data lagret i 'data/raw/frost_data.csv'")
+        print("Daglige data lagret i 'data/raw/frost_data.csv'")
 
     else:
-        print(f"❌ Feil {response.status_code}: {response.text}")
+        print(f"Feil {response.status_code}: {response.text}")
