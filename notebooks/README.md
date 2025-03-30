@@ -1,5 +1,3 @@
-
-
 #  Om mappen
 
 Mappen notebooks/ inneholder Jupyter Notebooks som brukes under utvikling, testing og utforskning av prosjektet. Notebooks brukes for å skrive, teste og dokumentere koden i en interaktiv arbeidsflyt.
