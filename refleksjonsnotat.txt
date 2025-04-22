@@ -29,7 +29,7 @@ Vurdering av resultater: Vi er svært fornøyde med sluttresultatet. Modellene g
 
 Videre forbedringer og forskning: Prosjektet kan videreutvikles ved å:
 •	Legge til flere stasjoner og geografiske områder
-•	Bruke LSTM eller annen sekvensiell modell for mer avansert          tidsprediksjon
+•	Bruke LSTM eller annen sekvensiell modell for mer avansert tidsprediksjon
 •	Lage interaktive dashboards med f.eks. Plotly eller Dash
 •	Integrere eksterne værvarsler for sammenligning
 
