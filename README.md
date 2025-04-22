@@ -16,11 +16,14 @@ Rensing og sammenslåing
 
     - Bearbeide og kombinere datasettene, slik at de kan analyseres sammen.
 
-Visualisering og analyse (kommer senere)
+Visualisering og analyse 
 
     - Utforske datasettet videre gjennom grafer, statistikk og eventuelle maskinlæringsmodeller.
 
-Dette repoet er i første omgang fokusert på datainnhenting og strukturering, men vil etter hvert utvides med mer analyse og visualisering.
+    - Trener flere modeller: SVR (Support Vector Regression) for fremtidig temperatur og solinnstråling
+    - Linær regresjon for å forutsi ComfortIndex
+
+    - Lager visuelle grafer automatisk som .png-filer i prosjektmappen 
 
 
 # Prosjektstruktur
@@ -35,6 +38,7 @@ Dette repoet er i første omgang fokusert på datainnhenting og strukturering, m
 │   └── README.md                      # Beskrivelse av datastruktur
 │
 ├── notebooks/                         # Jupyter Notebooks for utvikling og testing
+│   ├── data_analyse.ipynb             # Notebook for å kjøre ulike visualiseringer av data
 │   ├── data_clean.ipynb
 │   ├── data_fetch.ipynb
 │   ├── MiljoTest.ipynb
@@ -48,7 +52,7 @@ Dette repoet er i første omgang fokusert på datainnhenting og strukturering, m
 │   ├── clean_data.py                  # Rense og strukturere data
 │   ├── fetch_data_frost.py            # Hente data fra Frost API
 │   ├── fetch_data_nasa.py             # Hente data fra NASA POWER API
-│   ├── visualize.py                   # Funksjoner for å visualisere data
+│   ├── train_data.py                  # Prediktiv analyse, genererer visualiseringer
 │   └── README.md
 │
 ├── tasks/                             # Oppgavebeskrivelser og prosjektlevering
@@ -58,7 +62,8 @@ Dette repoet er i første omgang fokusert på datainnhenting og strukturering, m
 │
 ├── tests/                             # Tester for prosjektet
 │   ├── test_clean_data.py
-│   ├── test_fetch_data.py
+│   ├── test_fetch_frost.py
+│   ├── test_fetch_nasa.py
 │   └── README.md
 │
 ├── main.py                            # Hovedfil som kjører hele pipeline
