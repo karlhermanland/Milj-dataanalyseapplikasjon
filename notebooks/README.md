@@ -8,6 +8,7 @@ Mappen notebooks/ inneholder Jupyter Notebooks som brukes under utvikling, testi
 
 | Filnavn              | Beskrivelse                                                |
 |:--------------------:|:---------------------------------------------------------:|
+|  data_analyse.ipynb  | Notebook for analyse og demonstrering av data              |
 |  data_clean.ipynb    | Notebook for rensing og strukturering av værdata.          |
 |  data_fetch.ipynb    | Notebook for testing og demonstrasjon av datainnhenting.   |
 |  MiljoTest.ipynb     | Notebook brukt til testing av miljø og pakkeoppsett.       |
