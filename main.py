@@ -34,7 +34,6 @@ def main():
 
     #Kjør analyser og visualiseringer
     print("Kjører prediktiv analyse og lager grafer...")
-    import sys
     subprocess.run([sys.executable, "src/train_data.py"], check=True)
     print("Analyse og visualisering fullført! Sjekk .png-filene i prosjektmappen.")
 
