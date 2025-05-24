@@ -4,6 +4,34 @@ from collections import defaultdict
 import os
 
 def fetch_data_frost():
+
+    """
+    Henter og lagrer daglige værdata fra Frost API for en gitt periode.
+
+    Funksjonen bruker MET Norway sitt Frost API for å hente observasjoner for værstasjonen SN18700.
+    Den samler inn daglige gjennomsnitt for temperatur, vindhastighet, vindretning, relativ luftfuktighet,
+    lufttrykk ved havnivå, og daglig nedbør. Dataene aggregeres etter dato og lagres som en CSV-fil
+    i katalogen `data/raw/frost_data.csv`.
+
+    Bruker autentisering via en klient-ID og sender en GET-forespørsel til Frost API.
+    Dersom forespørselen lykkes, struktureres og lagres dataene. Hvis ikke, skrives en feilmelding ut.
+
+    CSV-filen inneholder følgende kolonner:
+    - Date
+    - Temperature
+    - Wind Speed
+    - Wind Direction
+    - Precipitation
+    - Humidity
+    - Pressure
+
+    Avhengigheter:
+        - requests
+        - csv
+        - collections.defaultdict
+        - os
+    """
+      
     client_id = "c533be15-1b26-4225-bf7d-cc5e5c81beb5"
     endpoint = "https://frost.met.no/observations/v0.jsonld"
 
