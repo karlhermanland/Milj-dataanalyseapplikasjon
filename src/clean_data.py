@@ -5,13 +5,39 @@ import os
 
 def clean_and_merge_weather_data(frost_path, nasa_path):
     """
-    Leser, renser og kombinerer værdata fra FROST og NASA.
-    - Fjerner tidssoner og formaterer datoer
-    - Fyller inn manglende verdier med median
-    - Fjerner uregelmessige verdier
-    - Standardiserer kolonnenavn
-    - Sorterer data etter dato
-    - Kjører SQL-analyse for aggregert daglig værdata
+    Leser, renser og kombinerer værdata fra FROST og NASA, og returnerer et renset og aggregert datasett.
+
+    Denne funksjonen utfører følgende steg:
+    1. Leser inn rådata fra CSV-filer produsert av FROST og NASA.
+    2. Simulerer datakvalitetsproblemer for å teste renselogikk (kun for utviklingsformål).
+    3. Rensker data:
+        - Konverterer og validerer datoer
+        - Fyller manglende verdier med median
+        - Fjerner urealistiske verdier (f.eks. ekstrem temperatur, luftfuktighet over 100 %)
+    4. Slår sammen de to datasettene på dato.
+    5. Beregner en enkel komfortindeks basert på temperatur og luftfuktighet.
+    6. Standardiserer kolonnenavn for SQL-analyse.
+    7. Kjører en SQL-spørring via pandasql for å beregne daglige gjennomsnittsverdier.
+    8. Lagrer det rensede datasettet til `data/clean/merged_data.csv`.
+
+    Parametere:
+        frost_path (str): Filsti til FROST-data i CSV-format.
+        nasa_path (str): Filsti til NASA-data i CSV-format.
+
+    Returnerer:
+        tuple[pd.DataFrame, pd.DataFrame]: 
+            - Det fullstendig rensede og sammenslåtte datasettet.
+            - Et datasett med daglig aggregerte verdier.
+
+    Unntak:
+        FileNotFoundError: Hvis en av inputfilene ikke finnes.
+        ValueError: Hvis en av inputfilene er tom.
+
+    Avhengigheter:
+        - pandas
+        - numpy
+        - pandasql
+        - os
     """
 
     print(" Leser inn data fra CSV...")
@@ -120,7 +146,7 @@ def clean_and_merge_weather_data(frost_path, nasa_path):
     return merged_df, daily_avg
 
 
-# 🔹 Kjør funksjonen dersom scriptet kjøres direkte
+# Kjør funksjonen dersom scriptet kjøres direkte
 if __name__ == "__main__":
     frost_file = "data/raw/frost_data.csv"
     nasa_file = "data/raw/nasa_extended_data.csv"

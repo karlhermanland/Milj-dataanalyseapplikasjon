@@ -2,6 +2,27 @@ import requests
 import pandas as pd
 
 def fetch_nasa_data():
+
+    """
+    Henter og lagrer daglige miljødata fra NASA POWER API for Blindern-området.
+
+    Funksjonen sender en GET-forespørsel til NASA POWER sitt API for å hente daglige observasjoner 
+    av følgende parametere:
+        - ALLSKY_SFC_SW_DWN: Solinnstråling ved jordoverflaten (W/m²)
+        - TS: Bakketemperatur (°C)
+        - QV2M: Spesifikk fuktighet 2 meter over bakken (kg/kg)
+        - PS: Overflatetrykk (Pa)
+
+    Koordinatene som brukes er 59.943°N, 10.718°E (Oslo-Blindern), for perioden 1. januar 2020 til 30. januar 2025.
+
+    Hvis forespørselen er vellykket og dataene finnes i responsen, konverteres dataene til en Pandas DataFrame,
+    datoene parses, og resultatet lagres som en CSV-fil i `data/raw/nasa_extended_data.csv`.
+
+    Avhengigheter:
+        - requests
+        - pandas
+    """
+
     # NASA POWER API-endepunkt
     url = "https://power.larc.nasa.gov/api/temporal/daily/point"
 
