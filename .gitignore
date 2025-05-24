@@ -1,0 +1,21 @@
+# Python-kompilerte filer og cache
+__pycache__/
+*.py[cod]
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# VS Code-innstillinger
+.vscode/
+
+# Virtuelle miljøer (hvis du har brukt det)
+venv/
+
+# OS-spesifikke skjulte filer
+.DS_Store
+
+# Eventuelle midlertidige/bygde filer
+*.log
+*.db
+*.sqlite3
+
