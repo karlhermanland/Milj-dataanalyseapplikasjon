@@ -32,12 +32,5 @@ def main():
     print("\nDaglig aggregert data:")
     print(daily_avg.head())
 
-    #Kjør analyser og visualiseringer
-    print("Kjører prediktiv analyse og lager grafer...")
-    subprocess.run([sys.executable, "src/train_data.py"], check=True)
-    print("Analyse og visualisering fullført! Sjekk .png-filene i prosjektmappen.")
-
-
-
 if __name__ == "__main__":
     main()
