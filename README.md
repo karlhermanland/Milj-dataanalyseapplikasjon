@@ -1,76 +1,82 @@
-
-
 # Om prosjektet
 
-Dette prosjektet samler inn, strukturerer og senere analyserer værdata fra to åpne API-er:
+Dette prosjektet henter inn, strukturerer og analyserer vær- og klimadata fra to åpne API-er:
 
-Frost API (MET Norway) – med times- eller døgnoppløste observasjonsdata fra Blindern stasjon.
-NASA POWER API – med daglige data for solinnstråling, bakketemperatur, luftfuktighet og trykk.
-Prosjektet består av flere faser:
+- **Frost API** (MET Norway): gir times- eller døgnoppløste observasjoner fra stasjonen Oslo – Blindern.
+- **NASA POWER API**: leverer daglige data for solinnstråling, bakketemperatur, luftfuktighet og trykk.
 
-Datainnhenting og strukturering
+Prosjektet gjennomføres som et helhetlig datavitenskapelig løp – fra datainnhenting til prediktiv modellering og visualisering av innsikt.
 
-    - Hente rådata fra de to kildene, og lagre dem i et ryddig CSV-format i mappen data/raw/.
+## Faser i prosjektet
 
-Rensing og sammenslåing
+1. **Datainnhenting og strukturering**  
+   Python-moduler henter rådata fra begge API-er og lagrer dem som `.csv`-filer i `data/raw/`.
 
-    - Bearbeide og kombinere datasettene, slik at de kan analyseres sammen.
+2. **Rensing og sammenslåing**  
+   Rådata transformeres og kombineres ved hjelp av `clean_data.py`. Det rensede datasettet lagres i `data/clean/`.
 
-Visualisering og analyse 
+3. **Analyse og visualisering**  
+   Utføres i `data_analyse.ipynb`, med utforskning av variabler, korrelasjoner og grafer. Visualiseringene genereres direkte i notebooken.
 
-    - Utforske datasettet videre gjennom grafer, statistikk og eventuelle maskinlæringsmodeller.
+4. **Prediktiv modellering**  
+   Utført i `prediction_model.ipynb`, som trener SVR-modeller for temperatur og solinnstråling og lineær regresjon for ComfortIndex. Visualiseringene genereres direkte i notebooken.
 
-    - Trener flere modeller: SVR (Support Vector Regression) for fremtidig temperatur og solinnstråling
-    - Linær regresjon for å forutsi ComfortIndex
-
-    - Lager visuelle grafer automatisk som .png-filer i prosjektmappen 
-
-
-# Prosjektstruktur
-
-.
+## Prosjektstruktur
+```
 ├── data/
-│   ├── clean/                         # Renset og kombinert data
-│   │   └── merged_data.csv
-│   ├── raw/                           # Rådata hentet fra API-ene
-│   │   ├── frost_data.csv
-│   │   └── nasa_extended_data.csv
-│   └── README.md                      # Beskrivelse av datastruktur
+│ ├── clean/ # Renset og kombinert data
+│ │ └── merged_data.csv
+│ ├── raw/ # Rådata hentet fra API-ene
+│ │ ├── frost_data.csv
+│ │ └── nasa_extended_data.csv
+│ └── README.md # Beskrivelse av datastruktur
 │
-├── notebooks/                         # Jupyter Notebooks for utvikling og testing
-│   ├── data_analyse.ipynb             # Notebook for å kjøre ulike visualiseringer av data
-│   ├── data_clean.ipynb
-│   ├── data_fetch.ipynb
-│   ├── MiljoTest.ipynb
-│   └── README.md
+├── notebooks/ # Jupyter Notebooks for utvikling og analyse
+│ ├── data_analyse.ipynb # Visualisering og analyse av datasettet
+│ ├── prediction_model.ipynb # Prediktiv modellering og evaluering
+│ ├── test_notebooks/ #Notebooks for utvikling og testing
+│ │ ├── data_clean.ipynb
+│ │ ├── data_fetch.ipynb
+│ │ └── MiljoTest.ipynb
+│ └── README.md # Beskrivelse av notebooks
 │
-├── resources/                         # Eventuelle bilder og eksterne filer
-│   ├── images/
-│   └── README.md
+├── src/ # Kildekode for prosjektet
+│ ├── clean_data.py # Rensing og strukturering
+│ ├── fetch_data_frost.py # Henting av data fra Frost API
+│ ├── fetch_data_nasa.py # Henting av data fra NASA POWER API
+│ └── README.md # Beskrivelse av SRC-mappen
 │
-├── src/                               # Kildekode for prosjektet
-│   ├── clean_data.py                  # Rense og strukturere data
-│   ├── fetch_data_frost.py            # Hente data fra Frost API
-│   ├── fetch_data_nasa.py             # Hente data fra NASA POWER API
-│   ├── train_data.py                  # Prediktiv analyse, genererer visualiseringer
-│   └── README.md
+├── tasks/ # Oppgavebeskrivelser
+│ ├── mappe_del_1.md
+│ ├── mappe_del_2.md
+│ └── mappe_generell_del.md
 │
-├── tasks/                             # Oppgavebeskrivelser og prosjektlevering
-│   ├── mappe_del_1.md
-│   ├── mappe_del_2.md
-│   └── mappe_generell_del.md
+├── tests/ # Enhetstester for koden
+│ ├── test_clean_data.py
+│ ├── test_fetch_frost.py
+│ ├── test_fetch_nasa.py
+│ └── README.md # Beskrivelse av enhetstester
 │
-├── tests/                             # Tester for prosjektet
-│   ├── test_clean_data.py
-│   ├── test_fetch_frost.py
-│   ├── test_fetch_nasa.py
-│   └── README.md
+├── docs/ # Dokumentasjon
+│ ├── KI_deklarasjon_Karl_Herman.pdf
+│ ├── KI_deklarasjon_Aleksander.pdf
+│ └── refleksjonsnotat.md # Refleksjonsnotat med læringsutbytte og erfaringer
 │
-├── main.py                            # Hovedfil som kjører hele pipeline
-└── README.md                          # Hoveddokumentasjon (denne filen)
+├── main.py # Hovedfil som kjører via src/
+├── requirements.txt # Prosjektavhengigheter
+└── README.md # Hovedbeskrivelse av prosjektet (denne filen)
+```
 
-# Datakilder
 
-https://frost.met.no/
+## Datakilder
 
-https://power.larc.nasa.gov/
+- [Frost API – MET Norway](https://frost.met.no/)
+- [NASA POWER API](https://power.larc.nasa.gov/)
+
+## Bruk
+
+Installer nødvendige pakker:
+pip install -r requirements.txt
+
+Innsamling og rensing av data gjennomføres via `main.py`, som automatisk henter, strukturerer og lagrer datasettet. Analyse, visualisering og prediktiv modellering utføres interaktivt i notebookene i `notebooks/`, der alle resultater og grafer genereres og vises direkte. Refleksjonsnotat finnes i `docs/refleksjonsnotat.md`.
+
