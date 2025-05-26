@@ -1,22 +1,25 @@
-# Om mappen
+# Om data-mappen
 
-Mappen data/ inneholder all data brukt i prosjektet. Dataene er delt inn i:
-- **Rådata** hentet direkte fra API-ene
-- **Renset data** som er bearbeidet og klargjort for analyse
+Mappen `data/` inneholder alle datasett brukt i prosjektet, og er delt inn i to hovedkategorier:
 
----
-
-# Innhold
-
-| Mappe / Fil          | Beskrivelse                                           |
-|:--------------------:|:----------------------------------------------------:|
-|  raw/                | Inneholder rådata hentet direkte fra Frost API og NASA POWER API. |
-|  clean/              | Inneholder ferdig renset og sammenslått datasett klart for analyse. |
-|  README.md           | Denne beskrivelsen.                                   |
+- `raw/`: Rådata hentet direkte fra API-er (Frost og NASA)
+- `clean/`: Renset og bearbeidet data klart til analyse og modellering
 
 ---
 
-# Bruksområde
+## Innhold
 
-- Data i raw/ skal ikke endres manuelt – kun oppdateres ved ny datainnhenting.
-- Data i clean/ brukes som grunnlag for visualisering, analyse og modellering.
+| Mappe / Fil                                | Beskrivelse                                                             |
+|--------------------------------------------|-------------------------------------------------------------------------|
+| `raw/frost_data.csv`                       | Lokale værdata hentet fra Frost API (MET, Oslo-Blindern)                |
+| `raw/nasa_extended_data.csv`               | Globale klimaverdier fra NASA POWER (solinnstråling, trykk, fuktighet)  |
+| `clean/merged_data.csv`                    | Sammenstilt og renset datasett brukt som input i analysen               |
+| `README.md`                                | Denne beskrivelsen                                                      |
+
+---
+
+## Bruksområde
+
+- Data i `raw/` er kun til dokumentasjon og backup, og skal ikke redigeres manuelt. Filene kan oppdateres gjennom ny datainnhenting via egne Python-skript.
+- `clean/merged_data.csv` er den bearbeidede datastrukturen som benyttes i hele prosjektet: visualisering, modelltrening og prediksjon.
+
