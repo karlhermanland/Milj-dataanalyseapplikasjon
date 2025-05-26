@@ -63,6 +63,7 @@ Prosjektet gjennomføres som et helhetlig datavitenskapelig løp – fra datainn
 │ └── refleksjonsnotat.md # Refleksjonsnotat med læringsutbytte og erfaringer
 │
 ├── main.py # Hovedfil som kjører via src/
+├── .gitignore # Filer/mapper som skal ignoreres av git
 ├── requirements.txt # Prosjektavhengigheter
 └── README.md # Hovedbeskrivelse av prosjektet (denne filen)
 ```
