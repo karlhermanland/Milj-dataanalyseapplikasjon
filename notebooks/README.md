@@ -1,24 +1,40 @@
-#  Om mappen
+# Om notebook-mappen
 
-Mappen notebooks/ inneholder Jupyter Notebooks som brukes under utvikling, testing og utforskning av prosjektet. Notebooks brukes for å skrive, teste og dokumentere koden i en interaktiv arbeidsflyt.
+Mappen `notebooks/` inneholder Jupyter Notebooks som er brukt i prosjektet for utvikling, testing og analyse. Innholdet er delt inn i to hoveddeler:
 
----
-
-#  Innhold
-
-| Filnavn              | Beskrivelse                                                |
-|:--------------------:|:---------------------------------------------------------:|
-|  data_analyse.ipynb  | Notebook for analyse og demonstrering av data              |
-|  data_clean.ipynb    | Notebook for rensing og strukturering av værdata.          |
-|  data_fetch.ipynb    | Notebook for testing og demonstrasjon av datainnhenting.   |
-|  MiljoTest.ipynb     | Notebook brukt til testing av miljø og pakkeoppsett.       |
-|  README.md           | Denne beskrivelsen.                                        |
+- `test_notebooks/`: inneholder notebooker brukt til testing, prototyping og eksperimentering underveis i utviklingen.
+- Øvrige notebooker (f.eks. `data_analyse.ipynb` og `prediction_model.ipynb`) inneholder den faktiske analysen, prediktiv modellering og visualisering som inngår i sluttproduktet.
 
 ---
 
-#  Bruksområde
+## Innhold
 
-Bruk notebookene for:
-- Testing av datainnhenting
-- Utforsking og bearbeiding av data
-- Dokumentasjon av analysearbeid
+### Hovednotebooks (analyse og modellering)
+
+| Filnavn                    | Beskrivelse                                                     |
+|----------------------------|-----------------------------------------------------------------|
+| `data_analyse.ipynb`       | Analyse og visualisering av datasettet                          |
+| `prediction_model.ipynb`   | Modellering og prediksjon av værdata                            |
+
+### Testnotebooks (under utvikling)
+
+| Filnavn                           | Beskrivelse                                                  |
+|-----------------------------------|--------------------------------------------------------------|
+| `test_notebooks/data_clean.ipynb` | Testing av ulike strategier for datarensing                  |
+| `test_notebooks/data_fetch.ipynb` | Eksperimentering med datainnhenting fra ulike API-er         |
+| `test_notebooks/MiljoTest.ipynb`  | Testing av miljø og pakkeavhengigheter                       |
+
+| Filnavn                           | Beskrivelse                                                  |
+|-----------------------------------|--------------------------------------------------------------|
+| `README.md`                       | Denne beskrivelsen                                           |
+---
+
+## Bruksområde
+
+Notebookene er brukt til:
+- Interaktiv datarensing og strukturering
+- Testing av API-integrasjon og datastrømmer
+- Trening og evaluering av prediktive modeller
+- Analyse og visualisering av resultater
+
+Merk: Kun notebookene utenfor `test_notebooks/` representerer den ferdige og strukturerte delen av prosjektet.
