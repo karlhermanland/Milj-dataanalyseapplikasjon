@@ -1,36 +1,26 @@
-Gjennom dette prosjektet har vi jobbet med et komplett datavitenskapelig løp – fra innhenting og rensing av værdata, til analyse og prediksjon av fremtidige miljøforhold. Prosjektet ga oss innsikt i hvordan åpne API-er kan benyttes til å hente sanntidsdata, og hvordan disse kan kombineres og analyseres for å gi ny innsikt i værmønstre. I tillegg fikk vi erfaring med å bruke ulike verktøy innen dataanalyse og maskinlæring i Python.
+Samarbeid
 
-Datainnsamling og behandling: Et sentralt læringspunkt i prosjektet var hvordan vi henter data fra både Frost API (MET) og NASA POWER. Vi utviklet egne Python-moduler for dette, og lærte hvordan man håndterer API-nøkler, strukturerer requests og lagrer resultatene i egnet CSV-format. Frost-dataene ga oss lokale observasjoner fra Blindern, mens NASA-dataene supplerte med verdier som solinnstråling, trykk og fuktighet. En utfordring var at datastrukturen og tidsoppløsningen ikke alltid matchet, noe som krevde nøye transformasjoner før de kunne slås sammen.
+Samarbeidet vårt har fungert veldig bra gjennom hele prosjektet. Vi var to i gruppa, og selv om vi fordelte oppgavene ut fra interesse og styrker, hvor én jobbet mer med API-integrasjon og kodestruktur, og den andre med analyse og visualisering, har vi hele tiden hatt god kommunikasjon og sørget for at begge har hatt oversikt over hele prosessen. Vi jobbet ikke helt adskilt, men så heller over hverandres kode og diskuterte løsninger jevnlig. På den måten kunne vi lære av hverandre og fange opp ting som kunne forbedres tidlig.
+Vi brukte Git aktivt, både for versjonskontroll og samarbeid. Å ha en strukturert mappestruktur og tydelige commit-meldinger hjalp oss mye, og vi jobbet med egne branches og merges for å unngå konflikter. En forbedringsmulighet er at vi i begynnelsen kunne vært enda flinkere til å ha små, jevnlige synkroniseringsmøter. Spesielt under datarensingsfasen endte vi opp med noe dobbeltarbeid fordi vi ikke hadde en klar nok plan for hvem som gjorde hva. Etter hvert fikk vi inn en god rutine med korte avklaringer før vi jobbet videre, og det gjorde resten av samarbeidet mer effektivt og oversiktlig.
+Det viktigste vi tar med oss er at godt samarbeid ikke bare handler om å dele på oppgavene, men å ha et felles eierskap til hele prosjektet og være åpne for å lære av hverandre. Det har vært motiverende og lærerikt å jobbe i et team hvor begge er engasjerte og villige til å bidra i alle deler av prosjektet.
 
-Gjennom clean_data.py utviklet vi en funksjonell pipeline for å rense og kombinere dataene. Dette inkluderte å konvertere datotidspunkt, aggregere per dag, håndtere manglende verdier og sikre at variablene var sammenlignbare. Vi oppdaget tidlig at enkelte kolonner hadde flere manglende verdier, og ble derfor nødt til å droppe eller fylle dem med snittverdier.
+Resultater
 
-Analyse og visualisering: I analysefasen opprettet vi en egen modul (train_data.py) som først trente en lineær regresjonsmodell på den sammenslåtte dataen, og deretter introduserte vi Support Vector Regression (SVR) for å predikere temperatur og solinnstråling 365 dager frem i tid. Vi la også til sesongvariabler som Month, Sin_Day og Cos_Day for å fange årstidseffekter. Dette forbedret prediksjonene betraktelig.
-Vi brukte Matplotlib og Seaborn for å lage flere informasjonsrike grafer, som:
-•	Predikert vs faktisk ComfortIndex
-•	Feilfordeling (residualer)
-•	Temperatur vs ComfortIndex med fargekodet luftfuktighet
-•	Fremtidsprediksjon av temperatur og solinnstråling, glattet med rullende gjennomsnitt
-Disse visualiseringene hjalp oss å tolke modellenes ytelse, identifisere avvik, og forstå koblingen mellom miljøvariabler og opplevd komfort.
+Vi ble fornøyde med resultatene vi oppnådde. ComfortIndex-modellen vår fikk en R²-verdi på 0.99, og MAE var lav, noe som viser at modellen fanget opp mønstrene i dataene godt. Samtidig lærte vi at noen metrikker ikke alltid gir mening: MAPE-verdien ble ekstremt høy på grunn av datapunkter nær null, og det minnet oss på hvor viktig det er å tolke evalueringsmålinger i kontekst og ikke bare se på tallene isolert.
+Visualiseringene vi lagde var avgjørende for å forstå modellens ytelse. Vi brukte blant annet scatterplots for faktisk vs. predikert ComfortIndex, residualplott for å avdekke skjevheter, og kombinasjoner av temperatur og luftfuktighet for å illustrere komfortnivåer. Det ga oss ikke bare innsikt i modellens styrker og svakheter, men også en dypere forståelse for hvordan visualisering kan være et viktig verktøy i modellvalidering.
 
-Ferdigheter vi har utviklet: Prosjektet har gitt oss praktisk erfaring med flere sentrale Python-biblioteker:
-•	Pandas for datamanipulering og rensing
-•	NumPy for numeriske beregninger og vektorisering
-•	Matplotlib og Seaborn for visualisering
-•	Scikit-learn for modelltrening, prediksjon og evaluering
-•	Subprocess og sys for å integrere analysen i en automatisert pipeline (main.py)
-Vi har også lært om konseptene bak standardisering, feature engineering (tid som sinuskurver), overtrening, og bruk av regresjon vs ikke-lineære modeller som SVR.
+Forbedringer
 
-Utfordringer: En stor utfordring var å få prediksjonene til å gi realistiske verdier over tid. Før vi la til sesongfunksjoner, predikerte modellen synkende temperatur mot sommeren. Vi løste dette ved å bruke sinus- og cosinusbaserte representasjoner av tid på året. I tillegg opplevde vi at SVR-modellen krevde nøye skalering og variert input for å unngå statiske eller trappetrinnsaktige prediksjoner.
-En annen utfordring var å forstå hvilke variabler som faktisk påvirket ComfortIndex, og hvordan man kunne velge de mest informative features uten å gjøre modellen for kompleks.
+Hvis vi skulle videreutviklet prosjektet, er det flere ting vi ville gjort annerledes eller lagt til. For det første ville vi utforsket bruk av LSTM-modeller eller andre sekvensielle modeller for å fange opp tidstrender bedre. Vi ville også forsøkt å sammenligne våre prediksjoner med faktiske værvarsler for å evaluere modellens praktiske nytteverdi. En annen idé er å lage et interaktivt dashboard i Dash eller Plotly, slik at brukere kan utforske dataene selv og se hvordan prediksjonene endres over tid eller sted.
+I tillegg ser vi at dataflyten mellom main.py og Jupyter-notebooks kunne vært bedre. Vi ville forbedret dataflyten mellom main.py og notebookene, slik at de samme resultatene kunne reproduseres både som script og som interaktiv rapport.
 
-Samarbeid og arbeidsflyt: Prosjektet ble gjennomført i gruppe på to, der vi fordelte oppgaver etter kompetanse og interesse. Noen fokuserte på API-integrasjon, andre på datarensing og analyse. Kommunikasjonen foregikk effektivt gjennom korte arbeidsmøter og bruk av felles Git-repositorium. Det var særlig nyttig å jobbe med en tydelig mappestruktur og skille src, data, scripts og visualiseringer.
+Læring
 
-Vurdering av resultater: Vi er svært fornøyde med sluttresultatet. Modellene ga forståelige og visuelle prediksjoner, og ComfortIndex-analysen oppnådde god nøyaktighet (R² på rundt 0.79). Grafene som ble generert var både informative og oversiktlige, og vi opplevde at datasettet faktisk ga meningsfull innsikt i klima og komfort.
+Vi har lært utrolig mye gjennom dette prosjektet, både faglig og teknisk. Fra starten, hvor vi satte opp utviklingsmiljøet og lærte å bruke Git, til vi jobbet med datahenting fra API-er, rensing, analyser og til slutt modellering og visualisering. Spesielt det å jobbe med ekte og rotete datasett har gitt oss en helt annen forståelse for datakvalitet og hva som skal til for å få brukbare resultater. Det er stor forskjell på teori og praksis, og dette prosjektet har vist oss hvor viktig det er å tenke gjennom hvert steg i dataflyten.
+Vi har fått trening i bruk av biblioteker som Pandas, NumPy, Matplotlib, Seaborn og scikit-learn. I tillegg har vi lært hvordan man gjør feature engineering, hvordan man tolker modeller, og hvordan man bygger en pipeline som faktisk funker fra start til slutt. Prosjektet har også gjort oss tryggere på feilsøking, testing og dokumentasjon, og hvordan man skriver kode som både fungerer og er lett å forstå for andre.
+Vi føler at vi har fått et tydeligere bilde av hva datavitenskap faktisk innebærer i praksis, og vi føler oss mye bedre rustet til videre prosjekter, både i studier og senere i arbeidslivet.
 
-Videre forbedringer og forskning: Prosjektet kan videreutvikles ved å:
-•	Legge til flere stasjoner og geografiske områder
-•	Bruke LSTM eller annen sekvensiell modell for mer avansert tidsprediksjon
-•	Lage interaktive dashboards med f.eks. Plotly eller Dash
-•	Integrere eksterne værvarsler for sammenligning
+Fremtidig relevans
 
-Oppsummering: Gjennom dette prosjektet har vi fått en helhetlig forståelse for hvordan et datavitenskapelig prosjekt kan bygges opp – fra rådata til analyse og innsikt. Det har styrket vår forståelse for programmering, datarensing og maskinlæring, og gitt oss konkrete verktøy vi tar med videre både i videre studier og i en fremtidig jobbsammenheng. Erfaringen med å jobbe med reelle data og se konkrete resultater av modellene våre har vært svært motiverende og lærerik.
+Alt vi har jobbet med i dette prosjektet, fra API-håndtering og datarensing, til modellering og formidling, er direkte relevant for både videre studier og jobber innen alt fra analyse og utvikling til forvaltning og beslutningsstøtte. Vi har sett hvordan data kan brukes til å gi innsikt i komplekse spørsmål som klima og komfort, og hvordan små tekniske valg kan ha stor innvirkning på sluttresultatet.
+Det viktigste vi tar med oss videre er trygghet i verktøyene vi har brukt, en forståelse for hele prosessen fra rådata til innsikt, og en erfaring med samarbeid som vi vet vil være nyttig uansett hva vi jobber med i fremtiden.
