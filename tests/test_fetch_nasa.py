@@ -1,8 +1,6 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
-import os
 import pandas as pd
-
 from src.fetch_data_nasa import fetch_nasa_data
 
 class TestFetchNasaData(unittest.TestCase):

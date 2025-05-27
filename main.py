@@ -1,7 +1,4 @@
-
 import os
-import sys
-import subprocess
 from src.fetch_data_nasa import fetch_nasa_data
 from src.fetch_data_frost import fetch_data_frost
 from src.clean_data import clean_and_merge_weather_data
